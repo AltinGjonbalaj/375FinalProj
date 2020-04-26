@@ -1,16 +1,17 @@
 import sys, getopt
-def prim(line, write){
+def prim(line, write):
+	pass
 #will take in the 2d array, and print to a set output file 
 
 
-}
-
-def krus(line, write){
 
 
-}
+def krus(line, write):
+	pass
 
-def main(argv){
+
+
+def main(argv):
 	inputFile = ''
 	outputFile = ''
 	try:
@@ -26,4 +27,4 @@ def main(argv){
 		prim(line)
 		krus(line)
 	readFile.close
-}
+
