@@ -10,6 +10,10 @@ def main(argv){
 			inputFile = arg
 		if opt == '-o':
 			outputFile = arg
-	print 'Input is ', inputFile
-	print 'Output is ', outputFile
+	readFile = open(inputFile)
+	for line in readFile:
+		#we need to parse line into 2d array // a matrix	
+		prim(line)
+		kruskals(line)
+	readFile.close
 }
