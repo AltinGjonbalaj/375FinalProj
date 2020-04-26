@@ -1,4 +1,14 @@
 import sys, getopt
+def prim(line, write){
+#will take in the 2d array, and print to a set output file 
+
+
+}
+
+def krus(line, write){
+
+
+}
 
 def main(argv){
 	inputFile = ''
@@ -14,6 +24,6 @@ def main(argv){
 	for line in readFile:
 		#we need to parse line into 2d array // a matrix	
 		prim(line)
-		kruskals(line)
+		krus(line)
 	readFile.close
 }
