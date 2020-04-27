@@ -1,31 +1,38 @@
-import sys, getopt
-def prim(line):
+import pprint
+import sys
+import random
+from numpy import inf
+import heapq
+
+
+pp = pprint.PrettyPrinter(width=41)
+
+def prim(graph):
+	included_nodes = set()
+	key = set() # visitable
+	root_node_index = random.choice(range(len(graph))) # Arbitrarily decide where we start iterating
+
+
+
+
+
+
+def krus(graph):
 	pass
-#will take in the 2d array, and print to a set output file 
 
 
 
+def main():
+	inputFile = 'input.txt'
+	outputFile = 'output.txt'
 
-def krus(line):
-	pass
+	with open(inputFile) as read_file:
+		for line in read_file.read().strip().split("\n"):
+			rows = line.split("|")
+			graph = [[-1 for x in range(len(rows))] for x in range(len(rows))] # initalize n x n matrix w/ -1s
+			for index, each in enumerate(rows):
+				graph[index] = map(lambda x: int(x), each.split(",")) # break the line into individual strings, then map to ints
+			# pp.pprint(graph)
+			prim_result = prim(graph)
 
-
-
-def main(argv):
-	inputFile = ''
-	outputFile = ''
-	try:
-      		opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
-	for opt, arg in opts:
-		if opt == '-i':
-			inputFile = arg
-		if opt == '-o':
-			outputFile = arg
-	readFile = open(inputFile)
-	for line in readFile:
-		line = line.split("|")
-		#we need to parse line into 2d array // a matrix	
-		prim(line)
-		krus(line)
-	readFile.close
-
+main()
