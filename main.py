@@ -13,6 +13,7 @@ def prim(graph):
 	keys = [[inf, x] for x in range(len(graph))]
 	keys[0][0] = 0
 	min_queue = keys
+	total_weight = 0
 
 	MST = []
 
@@ -20,12 +21,18 @@ def prim(graph):
 		heapq.heapify(min_queue)
 		min_vert, node = heapq.heappop(min_queue)
 		MST.append(node)
+		total_weight += min_vert
 		for index, each in enumerate(min_queue):
 			weight = each[0]
 			orig_index = each[1]
-			if graph[min_vert][orig_index] < weight and graph[min_vert][orig_index] != -1:
-				min_queue[index][0] = graph[min_vert][orig_index]
+			if graph[node][orig_index] < weight and graph[node][orig_index] != -1:
+				min_queue[index][0] = graph[node][orig_index]
 
+
+
+
+
+	print(total_weight)
 	print(MST)
 	return MST
 
