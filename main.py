@@ -7,7 +7,13 @@ import heapq
 # Printer formatting
 pp = pprint.PrettyPrinter(width=41)
 
+# Function to find a minumum spanning tree using Prim's Algorithm
 # Function to find a minumum spanning tree using Prim's Algorith
+# Key = an array of pairs of weight, index
+# min_queue = a min queue for key, we use this to tell when prims is done
+# total_weight = total weight of all the nodes
+# MST = the solution set of vertices
+
 def prim(graph):
 	# distance, original index, parent
 	keys = [[inf, x, -1] for x in range(len(graph))]
