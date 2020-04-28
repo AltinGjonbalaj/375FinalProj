@@ -23,6 +23,9 @@ def prim(graph):
 
 	MST = []
 
+# loops through all nodes, removing one at a time until min queue is empty
+# in each iteration you add the minimum vertice in min queue to the MST
+# after adding min vert the for loop checks to see if you can update any of the weights in min queue
 	while min_queue:
 		heapq.heapify(min_queue)
 		min_vert, node, parent = heapq.heappop(min_queue)
@@ -44,11 +47,12 @@ def prim(graph):
 	print(MST)
 	return MST
 
-
+#parses input from our input file into a 2d array // matrix representation for a graph
+# @DAVID WE SHOULD CALCULATE RUN TIME IN HERE AND PUSH IT TO A GRAPH BASED ON NUMBER OF NODES AND EDGES
 def main():
 	inputFile = 'input.txt'
 	outputFile = 'output.txt'
-
+	
 	with open(inputFile) as read_file:
 		for line in read_file.read().strip().split("\n"):
 			rows = line.split("|")
