@@ -9,8 +9,8 @@ pp = pprint.PrettyPrinter(width=41)
 
 # Function to find a minumum spanning tree using Prim's Algorith
 def prim(graph):
-	# -1 = nil, per slides
-	keys = [[inf, x] for x in range(len(graph))]
+	# distance, original index, parent
+	keys = [[inf, x, -1] for x in range(len(graph))]
 	keys[0][0] = 0
 	min_queue = keys
 	total_weight = 0
@@ -19,14 +19,16 @@ def prim(graph):
 
 	while min_queue:
 		heapq.heapify(min_queue)
-		min_vert, node = heapq.heappop(min_queue)
-		MST.append(node)
+		min_vert, node, parent = heapq.heappop(min_queue)
+		MST.append( (node,parent) )
 		total_weight += min_vert
 		for index, each in enumerate(min_queue):
 			weight = each[0]
 			orig_index = each[1]
+			parents = each[2]
 			if graph[node][orig_index] < weight and graph[node][orig_index] != -1:
 				min_queue[index][0] = graph[node][orig_index]
+				min_queue[index][2] = node
 
 
 
