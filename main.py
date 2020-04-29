@@ -3,6 +3,7 @@ import sys
 import random
 from numpy import inf
 import heapq
+import time
 
 # Printer formatting
 pp = pprint.PrettyPrinter(width=41)
@@ -38,21 +39,37 @@ def prim(graph):
 			if graph[node][orig_index] < weight and graph[node][orig_index] != -1:
 				min_queue[index][0] = graph[node][orig_index]
 				min_queue[index][2] = node
+	return_obj = {
+		"MST" : MST,
+		"total_weight": total_weight,
+		"num_nodes": len(graph),
+		"edges_in_MST": len(MST) - 1, # substract 1 for the (0, -1) connection
+	}
+	# print(total_weight)
+	# print(MST)
+	return return_obj
 
 
 
 
 
-	print(total_weight)
-	print(MST)
-	return MST
+# Results is a list, will hold dicts of result data
+results = []
+
 
 #parses input from our input file into a 2d array // matrix representation for a graph
 # @DAVID WE SHOULD CALCULATE RUN TIME IN HERE AND PUSH IT TO A GRAPH BASED ON NUMBER OF NODES AND EDGES
 def main():
-	inputFile = 'input.txt'
+	if len(sys.argv) != 2:
+		print("Supply input file (input.txt)")
+		exit(1)
+	inputFile = sys.argv[1]
 	outputFile = 'output.txt'
-	
+
+
+
+	# We could, theoretically add tons of error checking here, but we are generating the
+	# inputing using a cpp program - we are only using trusted data...
 	with open(inputFile) as read_file:
 		for line in read_file.read().strip().split("\n"):
 			rows = line.split("|")
@@ -61,7 +78,14 @@ def main():
 				graph[index] = map(lambda x: int(x), each.split(",")) # break the line into individual strings, then map to ints
 
 
+			start_time = time.time()
 			# pp.pprint(graph)
 			prim_result = prim(graph)
+			end_time = time.time()
+			run_time = end_time - start_time
+			prim_result["run_time"] = run_time
+			results.append(prim_result)
+
+	return results
 
 main()
