@@ -36,7 +36,7 @@ def prim(graph):
 			weight = each[0]
 			orig_index = each[1]
 			parents = each[2]
-			if graph[node][orig_index] < weight and graph[node][orig_index] != -1:
+			if graph[node][orig_index] != -1 and graph[node][orig_index] < weight:
 				min_queue[index][0] = graph[node][orig_index]
 				min_queue[index][2] = node
 	return_obj = {
