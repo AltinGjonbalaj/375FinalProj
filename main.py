@@ -75,11 +75,18 @@ def main():
 			rows = line.split("|")
 			graph = [[-1 for x in range(len(rows))] for x in range(len(rows))] # initalize n x n matrix w/ -1s
 			for index, each in enumerate(rows):
-				graph[index] = map(lambda x: int(x), each.split(",")) # break the line into individual strings, then map to ints
+				# print("Parsing a line . . . ")
+				try:
+					graph[index] = map(lambda x: int(x), each.split(",")) # break the line into individual strings, then map to ints
+				except Exception as e:
+					print(e)
+					print(line)
+				# print("Parsed . . . ")
 
 
 			start_time = time.time()
 			# pp.pprint(graph)
+			# print("Prim...")
 			prim_result = prim(graph)
 			end_time = time.time()
 			run_time = end_time - start_time
