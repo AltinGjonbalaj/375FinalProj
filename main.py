@@ -93,6 +93,11 @@ def main():
 			prim_result["run_time"] = run_time
 			results.append(prim_result)
 
+	if sys.argv[1] == "livetest.txt":
+		pp.pprint(results)
+
 	return results
+
+
 
 main()
